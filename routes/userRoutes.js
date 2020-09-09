@@ -4,6 +4,8 @@ const { User } = require('../models')
 
 router.get('/users', (req,res) => {
     User.find()
+        //requiring all items for the user
+        .populate('items')
         .then(users => res.json(users))
         .catch(err => console.log(err))
 })
